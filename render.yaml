@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: naviqra-api
+    runtime: docker
+    plan: 1c-2g
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeployTrigger: "off"
+    healthCheckPath: /health
+    dockerCommand: uvicorn naviqra.api:app --host 0.0.0.0 --port $PORT --workers 2 --proxy-headers --forwarded-allow-ips='*'
+    envVars:
+      - key: NAVIQRA_ENV
+        value: production
+      - key: NAVIQRA_DOCS
+        value: "false"
+      - key: NAVIQRA_ENABLE_LEGACY_V1
+        value: "false"
+      - key: NAVIQRA_DB_AUTO_CREATE
+        value: "false"
+      - key: NAVIQRA_LOG_LEVEL
+        value: INFO
+      - key: NAVIQRA_MAX_REQUEST_BYTES
+        value: "1048576"
+      - key: NAVIQRA_API_KEY
+        generateValue: true
+      - key: NAVIQRA_DATABASE_URL
+        sync: false
+      - key: NAVIQRA_TENANT_KEY_HASHES
+        sync: false
+      - key: NAVIQRA_ALLOWED_HOSTS
+        sync: false
+      - key: NAVIQRA_CORS_ORIGINS
+        sync: false

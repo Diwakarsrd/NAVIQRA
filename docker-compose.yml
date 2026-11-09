@@ -1,0 +1,22 @@
+services:
+  naviqra:
+    build: .
+    ports: ["127.0.0.1:8000:8000"]
+    environment:
+      NAVIQRA_DATABASE_URL: ${NAVIQRA_DATABASE_URL:?Set a managed PostgreSQL connection URL}
+      NAVIQRA_ENV: production
+      NAVIQRA_DB_AUTO_CREATE: "false"
+      NAVIQRA_API_KEY: ${NAVIQRA_API_KEY:?Set NAVIQRA_API_KEY in your environment}
+      NAVIQRA_TENANT_KEY_HASHES: ${NAVIQRA_TENANT_KEY_HASHES:?Set SHA-256 tenant key hashes JSON in your environment}
+      NAVIQRA_DOCS: "false"
+      NAVIQRA_ENABLE_LEGACY_V1: "false"
+      NAVIQRA_CORS_ORIGINS: ${NAVIQRA_CORS_ORIGINS:?Set trusted frontend origins}
+      NAVIQRA_ALLOWED_HOSTS: ${NAVIQRA_ALLOWED_HOSTS:?Set API hostnames}
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,noexec,nosuid
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL

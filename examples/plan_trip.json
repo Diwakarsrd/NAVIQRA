@@ -1,0 +1,12 @@
+{
+  "traveler_id": "traveler-123",
+  "origin": "Bengaluru",
+  "destination": "Tokyo",
+  "start_date": "2027-03-10",
+  "end_date": "2027-03-14",
+  "budget": 1800,
+  "currency": "USD",
+  "travelers": 2,
+  "interests": ["food", "architecture"],
+  "constraints": ["vegetarian options"]
+}

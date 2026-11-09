@@ -1,0 +1,26 @@
+{
+  "benchmark": "naviqra-platform-primitives",
+  "version": "0.3.0",
+  "environment": "local SQLite; no LLM or supplier calls",
+  "memory_read": {
+    "iterations": 250,
+    "mean_ms": 0.2049,
+    "p50_ms": 0.1414,
+    "p95_ms": 0.2162,
+    "max_ms": 10.6787
+  },
+  "group_consensus": {
+    "iterations": 250,
+    "mean_ms": 0.1479,
+    "p50_ms": 0.1219,
+    "p95_ms": 0.2039,
+    "max_ms": 3.1699
+  },
+  "graph_read": {
+    "iterations": 250,
+    "mean_ms": 0.1487,
+    "p50_ms": 0.1096,
+    "p95_ms": 0.2057,
+    "max_ms": 3.0338
+  }
+}

@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "naviqra"
+version = "0.1.0.dev0"
+description = "Open-source autonomous travel agent infrastructure: runtime, memory, graph, group consensus and recovery"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [{name = "NAVIQRA Contributors"}]
+dependencies = [
+  "fastapi>=0.115,<1.0",
+  "uvicorn[standard]>=0.30,<1.0",
+  "pydantic>=2.8,<3.0",
+]
+
+[project.optional-dependencies]
+postgres = ["psycopg[binary]>=3.2,<4"]
+dev = ["pytest>=8.3,<9", "httpx>=0.27,<1", "ruff>=0.6,<1"]
+
+[project.scripts]
+naviqra = "naviqra.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["naviqra*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.setuptools.package-data]
+naviqra = ["web/*.html"]

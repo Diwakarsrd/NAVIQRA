@@ -1,0 +1,28 @@
+{
+  "benchmark": "naviqra-v0.5.0-local-microbenchmark",
+  "iterations": 1000,
+  "environment": "local SQLite + synthetic in-process provider",
+  "metrics": {
+    "memory_read_ms": {
+      "p50_ms": 0.1808,
+      "p95_ms": 0.3342,
+      "mean_ms": 0.2984
+    },
+    "provider_search_ms": {
+      "p50_ms": 0.0036,
+      "p95_ms": 0.0051,
+      "mean_ms": 0.0046
+    },
+    "audit_write_ms": {
+      "p50_ms": 1.3471,
+      "p95_ms": 1.992,
+      "mean_ms": 1.5724
+    }
+  },
+  "limitations": [
+    "not a production deployment",
+    "no network or LLM latency",
+    "synthetic inventory only",
+    "single-process local measurements"
+  ]
+}
